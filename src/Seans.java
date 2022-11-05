@@ -19,11 +19,15 @@ public class Seans implements Serializable {
                 '}';
     }
 
-    public Seans(String tytul, int dzien, int godzina, int ograniczeniaWiekowe, HashMap<Character, HashMap<Integer, Boolean>> liczbaMiejsc) {
+    public Seans(String tytul, int dzien, int godzina, int ograniczeniaWiekowe/*, HashMap<Character,HashMap<Integer, Boolean>> liczbaMiejsc*/) {
         this.tytul = tytul;
         this.dzien = dzien;
         this.godzina = godzina;
         this.ograniczeniaWiekowe = ograniczeniaWiekowe;
-        this.liczbaMiejsc = liczbaMiejsc;
+        //this.liczbaMiejsc = liczbaMiejsc;
+    }
+
+    public void fillMap(){
+        liczbaMiejsc.put("a",new HashMap<Integer,Boolean>(1,Boolean.TRUE));
     }
 }
