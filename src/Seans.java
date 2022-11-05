@@ -6,6 +6,18 @@ public class Seans implements Serializable {
     int dzien;
     int godzina;
     int ograniczeniaWiekowe;
+    HashMap<Character, HashMap<Integer, Boolean>> liczbaMiejsc ;
+
+    @Override
+    public String toString() {
+        return "Seans{" +
+                "tytul='" + tytul + '\'' +
+                ", dzien=" + dzien +
+                ", godzina=" + godzina +
+                ", ograniczeniaWiekowe=" + ograniczeniaWiekowe +
+                ", liczbaMiejsc=" + liczbaMiejsc +
+                '}';
+    }
 
     public Seans(String tytul, int dzien, int godzina, int ograniczeniaWiekowe, HashMap<Character, HashMap<Integer, Boolean>> liczbaMiejsc) {
         this.tytul = tytul;
@@ -14,6 +26,4 @@ public class Seans implements Serializable {
         this.ograniczeniaWiekowe = ograniczeniaWiekowe;
         this.liczbaMiejsc = liczbaMiejsc;
     }
-
-    HashMap<Character, HashMap<Integer, Boolean>> liczbaMiejsc ;
 }
