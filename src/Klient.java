@@ -7,13 +7,12 @@ public class Klient implements  Serializable{
     int telefon;
     List<String> miejsce = new LinkedList<String>();
 
-    public Klient(String nazwisko, String imie, String mail, String seans, int telefon, List<String> miejsce) {
+    public Klient(String nazwisko, String imie, String mail, String seans, int telefon) {
         this.nazwisko = nazwisko;
         this.imie = imie;
         this.mail = mail;
         this.seans = seans;
         this.telefon = telefon;
-        this.miejsce = miejsce;
     }
 
     @Override
