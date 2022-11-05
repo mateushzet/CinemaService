@@ -6,7 +6,7 @@ public class Seans implements Serializable {
     int dzien;
     int godzina;
     int ograniczeniaWiekowe;
-    HashMap<Character, HashMap<Integer, Integer>> liczbaMiejsc ;
+    HashMap<Character, HashMap<Integer, Integer>> liczbaMiejsc = new HashMap<Character, HashMap<Integer, Integer>>();
 
     @Override
     public String toString() {
@@ -28,17 +28,20 @@ public class Seans implements Serializable {
     }
 
     public void fillMap(){
-        for(int i = 0; i<=20; i++){
-            liczbaMiejsc.put('a', new HashMap<Integer,Integer>(i,0));
-            liczbaMiejsc.put('b', new HashMap<Integer,Integer>(i,0));
-            liczbaMiejsc.put('c', new HashMap<Integer,Integer>(i,0));
-            liczbaMiejsc.put('d', new HashMap<Integer,Integer>(i,0));
-            liczbaMiejsc.put('e', new HashMap<Integer,Integer>(i,0));
-            liczbaMiejsc.put('f', new HashMap<Integer,Integer>(i,0));
-            liczbaMiejsc.put('g', new HashMap<Integer,Integer>(i,0));
-            liczbaMiejsc.put('h', new HashMap<Integer,Integer>(i,0));
-            liczbaMiejsc.put('i', new HashMap<Integer,Integer>(i,0));
-            liczbaMiejsc.put('j', new HashMap<Integer,Integer>(i,0));
+        HashMap<Integer, Integer> temp = new HashMap<Integer, Integer>();
+        for(Integer i = 0; i<=20; i++) {
+            temp.put(i,0);
         }
+        liczbaMiejsc.put('a', temp);
+        liczbaMiejsc.put('b', temp);
+        liczbaMiejsc.put('c', temp);
+        liczbaMiejsc.put('d', temp);
+        liczbaMiejsc.put('e', temp);
+        liczbaMiejsc.put('f', temp);
+        liczbaMiejsc.put('g', temp);
+        liczbaMiejsc.put('h', temp);
+        liczbaMiejsc.put('i', temp);
+        liczbaMiejsc.put('j', temp);
+
     }
 }

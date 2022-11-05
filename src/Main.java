@@ -8,7 +8,9 @@ import java.io.ObjectOutputStream;
 public class Main {
     public static void main(String[] args) {
         Klient mateusz = new Klient("ziecina", "mateusz", "mati@onet.pl", "minionki", 293849489);
-        Seans seans = new Seans("tytul", 10, 10, 18);
+        Seans seans = new Seans("Minionki", 10, 10, 18);
+        Seans seans = new Seans("Auta 2", 10, 10, 18);
+        Seans seans = new Seans("Minionki 2", 10, 10, 18);
         try {
 
             // tworzymy obiekt klasy ObjectOutputStream do zapisywania do pliku
@@ -36,5 +38,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error");
         }
+        TextInterface textInterface = new TextInterface();
+        textInterface.buyTicket();
     }
 }
