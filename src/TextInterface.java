@@ -1,9 +1,9 @@
 import java.util.Scanner;
 
 public class TextInterface {
-    Seans minionki ;
-    Seans auta ;
-    Seans pila ;
+    Seans minionki = null ;
+    Seans auta = null ;
+    Seans pila = null ;
     String nazwisko,imie, mail;
     Seans seans;
     int telefon, miejsce;
@@ -29,19 +29,19 @@ public class TextInterface {
         tempSeans = scan.nextInt();
         switch(tempSeans) {
             case 1:
-                seans = .minionki;
+                seans = minionki;
                 break;
             case 2:
-                // code block
+                seans = pila;
                 break;
             case 3:
-                // code block
+                seans = auta;
                 break;
             default:
                 System.out.println("Wybrano niepoprawny seans");
         }
 
-        seans = new Seans("tytul", 10, 10, 18);
+
 
         do {
             do {
