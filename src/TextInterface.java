@@ -11,6 +11,8 @@ public class TextInterface {
     Scanner scan = new Scanner(System.in);
     Klient klient;
     public void buyTicket(){
+
+
         char tempChar;
         int tempInt;
         int tempSeans;
@@ -61,6 +63,8 @@ public class TextInterface {
         System.out.println("Podaj telefon:");
         telefon = scan.nextInt();
         klient = new Klient(nazwisko, imie, mail, seans.tytul, telefon);
+        String temp = sektor+Integer.toString(miejsce);
+        klient.miejsce.add(temp);
         System.out.println(klient.toString());
     }
     public boolean isNotEmpty(){

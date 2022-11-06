@@ -15,7 +15,7 @@ public class Main {
 
         try {
 
-           ObjectInputStream in = new ObjectInputStream(new FileInputStream(".\\klient.dat"));
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(".\\klient.dat"));
 
 
             textInterface.auta = (Seans) in.readObject();
