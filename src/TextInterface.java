@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
 public class TextInterface {
+    Seans minionki ;
+    Seans auta ;
+    Seans pila ;
     String nazwisko,imie, mail;
     Seans seans;
     int telefon, miejsce;
@@ -10,6 +13,7 @@ public class TextInterface {
     public void buyTicket(){
         char tempChar;
         int tempInt;
+        int tempSeans;
         System.out.println("Witaj w serwisie JavaCinema");
         System.out.println("Podaj nazwisko:");
         nazwisko = scan.nextLine();
@@ -17,7 +21,26 @@ public class TextInterface {
         imie = scan.nextLine();
         System.out.println("Podaj mail:");
         mail = scan.nextLine();
+
         System.out.println("Wybierz seans:");
+        System.out.println("1. Minionki");
+        System.out.println("2. Pila");
+        System.out.println("3. Auta" );
+        tempSeans = scan.nextInt();
+        switch(tempSeans) {
+            case 1:
+                seans = .minionki;
+                break;
+            case 2:
+                // code block
+                break;
+            case 3:
+                // code block
+                break;
+            default:
+                System.out.println("Wybrano niepoprawny seans");
+        }
+
         seans = new Seans("tytul", 10, 10, 18);
 
         do {
