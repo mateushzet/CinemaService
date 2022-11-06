@@ -6,11 +6,10 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class Main {
+
     public static void main(String[] args) {
         Klient klient1 = null ;
-        Seans minionki = null ;
-        Seans auta = null ;
-        Seans pila = null ;
+        TextInterface textInterface = new TextInterface();
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ odczyt
 
@@ -19,14 +18,14 @@ public class Main {
            ObjectInputStream in = new ObjectInputStream(new FileInputStream(".\\klient.dat"));
 
 
-            auta = (Seans) in.readObject();
-            minionki = (Seans) in.readObject();
-            pila = (Seans) in.readObject();
+            textInterface.auta = (Seans) in.readObject();
+            textInterface.minionki = (Seans) in.readObject();
+            textInterface.pila = (Seans) in.readObject();
 
 
-            System.out.println(auta.toString());
-            System.out.println(minionki.toString());
-            System.out.println(pila.toString());
+            System.out.println(textInterface.auta.toString());
+            System.out.println(textInterface.minionki.toString());
+            System.out.println(textInterface.pila.toString());
 
             klient1 = (Klient) in.readObject();
             System.out.println(klient1.toString());
@@ -36,7 +35,6 @@ public class Main {
             System.out.println("Error");
         }
 
-        TextInterface textInterface = new TextInterface();
         textInterface.buyTicket();
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@ zapis
@@ -45,9 +43,9 @@ public class Main {
 
           ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(".\\klient.dat"));
           out.writeObject(textInterface.klient);
-          out.writeObject(auta);
-          out.writeObject(minionki);
-          out.writeObject(pila);
+          out.writeObject(textInterface.auta);
+          out.writeObject(textInterface.minionki);
+          out.writeObject(textInterface.pila);
           out.writeObject(klient1);
 
 
