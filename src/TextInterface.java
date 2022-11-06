@@ -30,8 +30,10 @@ public class TextInterface {
         do {
             System.out.println("Podaj miejsce:");
             tempInt = scan.nextInt();
-        }while( tempInt <1 || tempInt >10);
+        }while( tempInt <1 || tempInt >20);
             miejsce = tempInt;
+
+
         } while(isNotEmpty());
         System.out.println("Podaj telefon:");
         telefon = scan.nextInt();
