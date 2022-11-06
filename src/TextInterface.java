@@ -1,18 +1,15 @@
+import java.io.*;
 import java.util.Scanner;
 
 public class TextInterface {
-    Seans minionki = null ;
-    Seans auta = null ;
-    Seans pila = null ;
+
     String nazwisko,imie, mail;
     Seans seans;
     int telefon, miejsce;
     char sektor;
     Scanner scan = new Scanner(System.in);
     Klient klient;
-    public void buyTicket(){
-
-
+    public void buyTicket(Seans minionki, Seans auta, Seans pila) throws IOException {
         char tempChar;
         int tempInt;
         int tempSeans;
@@ -66,6 +63,12 @@ public class TextInterface {
         String temp = sektor+Integer.toString(miejsce);
         klient.miejsce.add(temp);
         System.out.println(klient.toString());
+        try{
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(".\\klient.dat"));
+        out.writeObject(klient);}
+        catch (Exception e){
+            System.out.println("error");
+        }
     }
     public boolean isNotEmpty(){
        if(seans.liczbaMiejsc.get(sektor).get(miejsce) == 0)

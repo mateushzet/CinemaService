@@ -7,47 +7,43 @@ import java.io.ObjectOutputStream;
 
 public class Main {
 
-    public static void main(String[] args) {
-        Klient klient1 = null ;
+    public static void main(String[] args) throws IOException {
+        Seans minionki = new Seans("minionki",12,12,12) ;
+        Seans auta = new Seans("auta",12,12,12) ;
+        Seans pila = new Seans("pila",12,12,12) ;
         TextInterface textInterface = new TextInterface();
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ odczyt
 
         try {
 
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(".\\klient.dat"));
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(".\\seans.dat"));
 
 
-            textInterface.auta = (Seans) in.readObject();
-            textInterface.minionki = (Seans) in.readObject();
-            textInterface.pila = (Seans) in.readObject();
+            auta = (Seans) in.readObject();
+            minionki = (Seans) in.readObject();
+            pila = (Seans) in.readObject();
 
 
-            System.out.println(textInterface.auta.toString());
-            System.out.println(textInterface.minionki.toString());
-            System.out.println(textInterface.pila.toString());
-
-            klient1 = (Klient) in.readObject();
-            System.out.println(klient1.toString());
+            System.out.println(auta.toString());
+            System.out.println(minionki.toString());
+            System.out.println(pila.toString());
 
             in.close();
         } catch (Exception e) {
-            System.out.println("Error");
+            System.out.println("Error nie otwarto pliku");
         }
 
-        textInterface.buyTicket();
+        textInterface.buyTicket(minionki, auta, pila);
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@ zapis
 
         try {
 
-          ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(".\\klient.dat"));
-          out.writeObject(textInterface.klient);
-          out.writeObject(textInterface.auta);
-          out.writeObject(textInterface.minionki);
-          out.writeObject(textInterface.pila);
-          out.writeObject(klient1);
-
+          ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(".\\seans.dat"));
+          out.writeObject(auta);
+          out.writeObject(minionki);
+          out.writeObject(pila);
 
             out.close();
         } catch (Exception e) {
