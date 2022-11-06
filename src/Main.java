@@ -7,34 +7,42 @@ import java.io.ObjectOutputStream;
 
 public class Main {
     public static void main(String[] args) {
-        Klient mateusz = new Klient("ziecina", "mateusz", "mati@onet.pl", "minionki", 293849489);
-        Seans seans = new Seans("Minionki", 10, 10, 18);
-        Seans seans = new Seans("Auta 2", 10, 10, 18);
-        Seans seans = new Seans("Minionki 2", 10, 10, 18);
+        Klient mateusz ;
+        Seans minionki ;
+        Seans auta ;
+        Seans pila ;
         try {
 
-            // tworzymy obiekt klasy ObjectOutputStream do zapisywania do pliku
-            ObjectOutputStream wy = new ObjectOutputStream(new FileOutputStream(".\\klient.dat"));
-
-            // no i zapisujemy
-            wy.writeObject(mateusz);
-            wy.close();
+//            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(".\\klient.dat"));
+//
+//          out.writeObject(auta);
+//          out.writeObject(minionki);
+//          out.writeObject(pila);
+//          out.writeObject(mateusz);
+//
+//            out.close();
         } catch (Exception e) {
             System.out.println("Error");
         }
 
         try {
-// tworzymy obiekt klasy ObjectInputStream do odczytywania z pliku
-            ObjectInputStream we = new ObjectInputStream(new FileInputStream(".\\klient.dat"));
 
-            // odczytujemy z pliku; (klient) - to rzutowanie z Object na klient
-            Klient k1 = (Klient) we.readObject();
+           ObjectInputStream in = new ObjectInputStream(new FileInputStream(".\\klient.dat"));
 
-            // i ładnie na konsolę wyrzucamy wynik
-            System.out.println(k1);
-            Klient p2 = (Klient) we.readObject();
-            System.out.println(p2);
-            we.close();
+
+            auta = (Seans) in.readObject();
+            minionki = (Seans) in.readObject();
+            pila = (Seans) in.readObject();
+
+
+            System.out.println(auta.toString());
+            System.out.println(minionki.toString());
+            System.out.println(pila.toString());
+
+            Klient Mateusz = (Klient) in.readObject();
+            System.out.println(Mateusz.toString());
+
+            in.close();
         } catch (Exception e) {
             System.out.println("Error");
         }

@@ -8,6 +8,8 @@ public class TextInterface {
     Scanner scan = new Scanner(System.in);
     Klient klient;
     public void buyTicket(){
+        char tempChar;
+        int tempInt;
         System.out.println("Witaj w serwisie JavaCinema");
         System.out.println("Podaj nazwisko:");
         nazwisko = scan.nextLine();
@@ -17,11 +19,19 @@ public class TextInterface {
         mail = scan.nextLine();
         System.out.println("Wybierz seans:");
         seans = new Seans("tytul", 10, 10, 18);
+
         do {
-            System.out.println("Podaj sektor:");
-            sektor = scan.next().charAt(0);
+            do {
+                System.out.println("Podaj sektor:");
+                tempChar = scan.next().charAt(0);
+            }while( tempChar != 'a' && tempChar != 'b' && tempChar != 'c' && tempChar != 'd' && tempChar != 'e' && tempChar != 'f' && tempChar != 'g' && tempChar != 'h' &&  tempChar != 'i' && tempChar != 'j');
+            sektor = tempChar;
+
+        do {
             System.out.println("Podaj miejsce:");
-            miejsce = scan.nextInt();
+            tempInt = scan.nextInt();
+        }while( tempInt <1 || tempInt >10);
+            miejsce = tempInt;
         } while(isNotEmpty());
         System.out.println("Podaj telefon:");
         telefon = scan.nextInt();
