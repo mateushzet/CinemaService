@@ -3,10 +3,9 @@ import java.util.List;
 import java.io.Serializable;
 
 public class Klient implements  Serializable{
-    String nazwisko,imie, mail, seans;
     int telefon;
+    String nazwisko, imie, mail, seans;
     List<String> miejsce = new LinkedList<String>();
-
     public Klient(String nazwisko, String imie, String mail, String seans, int telefon) {
         this.nazwisko = nazwisko;
         this.imie = imie;
@@ -14,7 +13,6 @@ public class Klient implements  Serializable{
         this.seans = seans;
         this.telefon = telefon;
     }
-
     @Override
     public String toString() {
         return "Klient{" +

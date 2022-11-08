@@ -1,4 +1,3 @@
-import java.io.FileNotFoundException;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -8,26 +7,22 @@ import java.io.ObjectOutputStream;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Seans minionki = new Seans("minionki",12,12,12) ;
-        Seans auta = new Seans("auta",12,12,12) ;
-        Seans pila = new Seans("pila",12,12,12) ;
+        Seans minionki = null;
+        Seans auta = null;
+        Seans pila = null;
         TextInterface textInterface = new TextInterface();
 
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ odczyt
-
         try {
-
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(".\\seans.dat"));
-
 
             auta = (Seans) in.readObject();
             minionki = (Seans) in.readObject();
             pila = (Seans) in.readObject();
 
-
-            System.out.println(auta.toString());
-            System.out.println(minionki.toString());
-            System.out.println(pila.toString());
+//            System.out.println(auta.toString());
+//            System.out.println(minionki.toString());
+//            System.out.println(pila.toString());
 
             in.close();
         } catch (Exception e) {
@@ -35,9 +30,10 @@ public class Main {
         }
 
         textInterface.buyTicket(minionki, auta, pila);
+        saveSeansDataToFile(minionki, auta, pila);
+    }
 
-        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@ zapis
-
+    private static void saveSeansDataToFile(Seans minionki, Seans auta, Seans pila) {
         try {
 
           ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(".\\seans.dat"));
@@ -49,5 +45,8 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error");
         }
+    }
+    private void load(){
+
     }
 }

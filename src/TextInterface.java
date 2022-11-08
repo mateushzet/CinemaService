@@ -1,18 +1,30 @@
 import java.io.*;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class TextInterface {
-
-    String nazwisko,imie, mail;
-    Seans seans;
     int telefon, miejsce;
     char sektor;
-    Scanner scan = new Scanner(System.in);
+    String nazwisko,imie, mail;
+    Seans seans;
     Klient klient;
+    Scanner scan = new Scanner(System.in);
     public void buyTicket(Seans minionki, Seans auta, Seans pila) throws IOException {
-        char tempChar;
-        int tempInt;
-        int tempSeans;
+
+        collectPersonalData();
+        chooseSeans(minionki, auta, pila);
+        setSeatIdInClientClass();
+        bookSeatInHashMap();
+        saveClientDataToFile();
+    }
+
+    private void setSeatIdInClientClass() {
+        klient = new Klient(nazwisko, imie, mail, seans.tytul, telefon);
+        String temp = sektor+Integer.toString(miejsce);
+        klient.miejsce.add(temp);
+    }
+
+    private void collectPersonalData() {
         System.out.println("Witaj w serwisie JavaCinema");
         System.out.println("Podaj nazwisko:");
         nazwisko = scan.nextLine();
@@ -20,11 +32,18 @@ public class TextInterface {
         imie = scan.nextLine();
         System.out.println("Podaj mail:");
         mail = scan.nextLine();
+        System.out.println("Podaj telefon:");
+        telefon = scan.nextInt();
+    }
 
+    private void chooseSeans(Seans minionki, Seans auta, Seans pila) {
         System.out.println("Wybierz seans:");
         System.out.println("1. Minionki");
         System.out.println("2. Pila");
         System.out.println("3. Auta" );
+        int tempSeans;
+        int tempInt;
+        char tempChar;
         tempSeans = scan.nextInt();
         switch(tempSeans) {
             case 1:
@@ -39,7 +58,6 @@ public class TextInterface {
             default:
                 System.out.println("Wybrano niepoprawny seans");
         }
-
 
 
         do {
@@ -57,22 +75,35 @@ public class TextInterface {
 
 
         } while(isNotEmpty());
-        System.out.println("Podaj telefon:");
-        telefon = scan.nextInt();
-        klient = new Klient(nazwisko, imie, mail, seans.tytul, telefon);
-        String temp = sektor+Integer.toString(miejsce);
-        klient.miejsce.add(temp);
+    }
+
+    private void saveClientDataToFile() {
         System.out.println(klient.toString());
         try{
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(".\\klient.dat"));
-        out.writeObject(klient);}
+        out.writeObject(klient);
+        }
         catch (Exception e){
             System.out.println("error");
         }
     }
+
+    private void bookSeatInHashMap() {
+        HashMap<Integer, Integer> tempHashMap = (seans.liczbaMiejsc.get(sektor));
+        System.out.println(miejsce);
+        tempHashMap.put(miejsce,1);
+        seans.liczbaMiejsc.replace(sektor, tempHashMap);
+        System.out.println(seans.liczbaMiejsc);
+    }
+
     public boolean isNotEmpty(){
        if(seans.liczbaMiejsc.get(sektor).get(miejsce) == 0)
            return false;
-       else return true;
+       else{
+           System.out.println();
+           System.out.println("MIEJSCE ZAJĘTE");
+           System.out.println();
+           return true;
+       }
     }
 }
