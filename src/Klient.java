@@ -3,6 +3,8 @@ import java.util.List;
 import java.io.Serializable;
 
 public class Klient implements  Serializable{
+
+    private static final long serialVersionUID = 9038992268060172230L;
     int telefon;
     String nazwisko, imie, mail, seans;
     List<String> miejsce = new LinkedList<String>();

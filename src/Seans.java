@@ -2,6 +2,8 @@ import java.io.Serializable;
 import java.util.HashMap;
 
 public class Seans implements Serializable {
+
+    private static final long serialVersionUID = 951731988235421841L;
     String tytul;
     int dzien;
     int godzina;
