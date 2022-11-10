@@ -10,12 +10,24 @@ public class TextInterface {
     Klient klient;
     Scanner scan = new Scanner(System.in);
     public void buyTicket(Seans minionki, Seans auta, Seans pila) throws IOException {
+        //@@@@@@@@@@@@@@@@ odczyt danych o biletach
+        String strLine;
+        String dane = new String();
+        FileInputStream f = new FileInputStream(".\\tickets.txt");
+        DataInputStream in = new DataInputStream(f);
+        BufferedReader r = new BufferedReader(new InputStreamReader(in));
+        while ((strLine = r.readLine()) != null)
+            dane += strLine;
+        in.close();
+
+        System.out.println("Pula wykupionych biletów");
+        System.out.println(dane);
 
         collectPersonalData();
         chooseSeans(minionki, auta, pila);
         setSeatIdInClientClass();
         bookSeatInHashMap();
-        saveClientDataToFile();
+        saveClientDataToFile(dane);
     }
 
     private void setSeatIdInClientClass() {
@@ -77,7 +89,7 @@ public class TextInterface {
         } while(isNotEmpty());
     }
 
-    private void saveClientDataToFile() {
+    private void saveClientDataToFile(String dane) {
         System.out.println(klient.toString());
         try{
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(".\\klient.dat"));
@@ -90,7 +102,8 @@ public class TextInterface {
         try{
         FileWriter f = new FileWriter(".\\tickets.txt");
         BufferedWriter out = new BufferedWriter(f);
-        out.write(seans.tytul+": "+sektor+Integer.toString(miejsce)+", ");
+        out.append(dane+seans.tytul+": "+sektor+Integer.toString(miejsce)+", ");
+        out.newLine();
         out.close();}
         catch (Exception e){
             System.out.println("error");
@@ -98,11 +111,14 @@ public class TextInterface {
     }
 
     private void bookSeatInHashMap() {
+
+        HashMap<Character, HashMap<Integer, Integer>> liczbaMiejsc = new HashMap<Character, HashMap<Integer, Integer>>();
+
         HashMap<Integer, Integer> tempHashMap = (seans.liczbaMiejsc.get(sektor));
-        System.out.println(miejsce);
         tempHashMap.put(miejsce,1);
         seans.liczbaMiejsc.replace(sektor, tempHashMap);
         System.out.println(seans.liczbaMiejsc);
+        System.out.println(tempHashMap);
     }
 
     public boolean isNotEmpty(){

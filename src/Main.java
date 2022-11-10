@@ -1,8 +1,4 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class Main {
 
@@ -28,7 +24,9 @@ public class Main {
         } catch (Exception e) {
             System.out.println("Error nie otwarto pliku");
         }
-
+        minionki.fillMap();
+        auta.fillMap();
+        pila.fillMap();
         textInterface.buyTicket(minionki, auta, pila);
         saveSeansDataToFile(minionki, auta, pila);
     }
