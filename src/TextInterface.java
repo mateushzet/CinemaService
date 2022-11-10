@@ -86,6 +86,15 @@ public class TextInterface {
         catch (Exception e){
             System.out.println("error");
         }
+
+        try{
+        FileWriter f = new FileWriter(".\\tickets.txt");
+        BufferedWriter out = new BufferedWriter(f);
+        out.write(seans.tytul+": "+sektor+Integer.toString(miejsce)+", ");
+        out.close();}
+        catch (Exception e){
+            System.out.println("error");
+        }
     }
 
     private void bookSeatInHashMap() {
