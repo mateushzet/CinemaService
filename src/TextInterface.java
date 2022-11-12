@@ -9,7 +9,16 @@ public class TextInterface {
     Klient klient;
     Scanner scan = new Scanner(System.in);
     public void buyTicket(Seans minionki, Seans auta, Seans pila) throws IOException {
-        //@@@@@@@@@@@@@@@@ odczyt danych o biletach
+
+        String ticketsData = getTicketsData();
+        collectPersonalData();
+        chooseSeans(minionki, auta, pila);
+        setSeatIdInClientClass();
+        bookSeatInHashMap();
+        saveClientDataToFile(ticketsData);
+    }
+
+    private static String getTicketsData() throws IOException {
         String strLine;
         String dane = new String();
         FileInputStream f = new FileInputStream(".\\tickets.txt");
@@ -18,12 +27,7 @@ public class TextInterface {
         while ((strLine = r.readLine()) != null)
             dane += strLine;
         in.close();
-
-        collectPersonalData();
-        chooseSeans(minionki, auta, pila);
-        setSeatIdInClientClass();
-        bookSeatInHashMap();
-        saveClientDataToFile(dane);
+        return dane;
     }
 
     private void setSeatIdInClientClass() {
@@ -108,7 +112,7 @@ public class TextInterface {
             seat = tempInt;
 
 
-        } while(isNotEmpty());
+        } while(seatIsNotEmpty());
     }
 
     private void printSeans() {
@@ -169,7 +173,7 @@ public class TextInterface {
         seans.liczbaMiejsc.get(sector).replace(seat,1);
     }
 
-    public boolean isNotEmpty(){
+    public boolean seatIsNotEmpty(){
        if(seans.liczbaMiejsc.get(sector).get(seat) == 0)
            return false;
        else{
