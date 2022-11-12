@@ -57,7 +57,11 @@ public class TextInterface {
         do{
             inCorrectNumber = false;
         System.out.println("Podaj telefon:");
+        try{
         telefon = scan.nextInt();
+        }catch (Exception e){
+            telefon = 100000000;
+        }
         if(telefon<100000000 || telefon > 999999999){
             System.out.println("Podano niewłaściwy numer!");
             inCorrectNumber = true;
