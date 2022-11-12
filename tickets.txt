@@ -1,1 +1,1 @@
-minionki: a1, minionki: a9, pila: a4, auta: a8, auta: a6, 
+minionki: a1, minionki: a2,pila: a1, auta: a2, auta: g2, auta: g3, auta: a1, pila: a2, pila: i2, 

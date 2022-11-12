@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Seans implements Serializable {
@@ -11,15 +12,12 @@ public class Seans implements Serializable {
     HashMap<Character, HashMap<Integer, Integer>> liczbaMiejsc = new HashMap<Character, HashMap<Integer, Integer>>();
     @Override
     public String toString() {
-        return "Seans{" +
-                "tytul='" + tytul + '\'' +
-                ", dzien=" + dzien +
-                ", godzina=" + godzina +
-                ", ograniczeniaWiekowe=" + ograniczeniaWiekowe +
-                ", liczbaMiejsc=" + liczbaMiejsc +
-                '}';
+        return
+                "dzien: " + dzien +
+                ", godzina: " + godzina +
+                ", ograniczeniaWiekowe: " + ograniczeniaWiekowe;
     }
-    public Seans(String tytul, int dzien, int godzina, int ograniczeniaWiekowe/*, HashMap<Character,HashMap<Integer, Boolean>> liczbaMiejsc*/) {
+    public Seans(String tytul, int dzien, int godzina, int ograniczeniaWiekowe) {
         this.tytul = tytul;
         this.dzien = dzien;
         this.godzina = godzina;
@@ -27,20 +25,23 @@ public class Seans implements Serializable {
         fillMap();
     }
     public void fillMap(){
-        HashMap<Integer, Integer> temp = new HashMap<Integer, Integer>();
+        ArrayList<HashMap<Integer, Integer>> hashMapList = new ArrayList<HashMap<Integer, Integer>>();
+        for(int j = 0; j<10;j++)
+            hashMapList.add(new HashMap<Integer,Integer>());
         for(Integer i = 0; i<=20; i++) {
-            temp.put(i,0);
+            for(int j = 0; j<10;j++)
+                 hashMapList.get(j).put(i,0);
         }
-        liczbaMiejsc.put('a', temp);
-        liczbaMiejsc.put('b', temp);
-        liczbaMiejsc.put('c', temp);
-        liczbaMiejsc.put('d', temp);
-        liczbaMiejsc.put('e', temp);
-        liczbaMiejsc.put('f', temp);
-        liczbaMiejsc.put('g', temp);
-        liczbaMiejsc.put('h', temp);
-        liczbaMiejsc.put('i', temp);
-        liczbaMiejsc.put('j', temp);
+        liczbaMiejsc.put('a', hashMapList.get(0));
+        liczbaMiejsc.put('b', hashMapList.get(1));
+        liczbaMiejsc.put('c', hashMapList.get(2));
+        liczbaMiejsc.put('d', hashMapList.get(3));
+        liczbaMiejsc.put('e', hashMapList.get(4));
+        liczbaMiejsc.put('f', hashMapList.get(5));
+        liczbaMiejsc.put('g', hashMapList.get(6));
+        liczbaMiejsc.put('h', hashMapList.get(7));
+        liczbaMiejsc.put('i', hashMapList.get(8));
+        liczbaMiejsc.put('j', hashMapList.get(9));
 
     }
 }

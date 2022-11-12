@@ -17,14 +17,12 @@ public class Klient implements  Serializable{
     }
     @Override
     public String toString() {
-        return "Klient{" +
-                "nazwisko='" + nazwisko + '\'' +
+        return  "nazwisko='" + nazwisko + '\'' +
                 ", imie='" + imie + '\'' +
                 ", mail='" + mail + '\'' +
                 ", seans='" + seans + '\'' +
                 ", telefon=" + telefon +
-                ", miejsce=" + miejsce +
-                '}';
+                ", miejsce=" + miejsce;
     }
 }
 
